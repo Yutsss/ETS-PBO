@@ -110,3 +110,51 @@ public class CoffeeMachine {
 
 Kelas yang merepresentasikan mesin kopi berfungsi sebagai kelas utama dari mesin kopi. Memiliki atribut `coffeeMenu` berupa array list yang berfungsi menyimpan objek-objek `Coffee`. Kelas `konstruktor` berfungsi untuk menginisiasi atribut `coffeeMenu` dengan array list kosong. Method `addCoffee` berfungsi untuk menambahkan kopi ke array `coffeeMenu`. Method `displayMenu` berfungsi untuk menampilkan seluruh kopi yang ada dialam array `coffeeMenu`. 
 Terakhir, method `buyCoffee` berfungsi sebagai method untuk membeli kopi.
+
+## **3. Apa yang dimaksud `enkapsulasi`. Berikan contoh dengan dengan menggunakan modifier private dengan motede akses (`getter` dan `setter`).**
+
+`Enkapsulasi` adalah konsep keamanan dalam konsep PBO, yang dimana konsep ini akan menyembunyikan atribut-atribut yang ada didalam kelas. Terdapat 3 tingkatan dalam `Enkapsulasi`, 
+
+**Public**
+
+Dapat diakses dari luar (tanpa keamanan).
+
+**Protected**
+
+Hanya bisa diakses dari kelas tersebut beserta kelas turunannya.
+
+**Private**
+
+Hanya bisa diakses didalam kelas tersebut.
+
+Berikut contoh penggunaan dengan modifier `private` serta `getter` dan `setter` nya,
+
+```java
+public class Coffee {
+    private String name;  
+    private int price;     
+
+    public Coffee(String name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+}
+```
+
+Disini karena atribut `name` dan `price` merupakan atribut `private`, maka disini menggunakan method `getter` (`getName` untuk `name` dan `getPrice` untuk `price`) untuk mendapatkan nilai dari atribut, dan `setter` (`setName` untuk `name` dan `setPrice` untuk `price`) untuk set value dari atribut.
