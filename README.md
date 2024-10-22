@@ -158,3 +158,70 @@ public class Coffee {
 ```
 
 Disini karena atribut `name` dan `price` merupakan atribut `private`, maka disini menggunakan method `getter` (`getName` untuk `name` dan `getPrice` untuk `price`) untuk mendapatkan nilai dari atribut, dan `setter` (`setName` untuk `name` dan `setPrice` untuk `price`) untuk set value dari atribut.
+
+
+## **4. Buatlah kelas `BankAccount` dan `Customer`, yang dimana objek customer memiliki akun bank masing-masing, serta method untuk setor uang (`deposit`) dan tarik uang (`withdraw`). Pastikan interaksi terjadi di objek customer**
+
+### **Kelas `BankAccount`**
+
+```java
+public class BankAccount {
+    private double balance;
+
+    public BankAccount(double initialBalance) {
+        this.balance = initialBalance;
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Successfully deposited: " + amount);
+        } else {
+            System.out.println("Deposit amount must be positive.");
+        }
+    }
+
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("Successfully withdrew: " + amount);
+        } else {
+            System.out.println("Insufficient balance or invalid amount.");
+        }
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+```
+
+Kelas ini memiliki atribut `balance` sebagai representasi dari saldo pada akun bank. Lalu terdapat method `konstruktor` yang akan menginisiasi nilai dari `balance` dengan saldp awal. Selanjutnya terdapat method `deposit` yang berfungsi untuk menyetor uang kedalam atribut `balance` dan method `witbdraw` untuk penarikan `balance`. Terakhir, method `getBalance` digunakan untuk mendapatkan isi saldo dari akun bank.
+
+### **Kelas `Customer`**
+
+```java
+public class Customer {
+    private String name;
+    private BankAccount account;
+
+    public Customer(String name, double initialBalance) {
+        this.name = name;
+        this.account = new BankAccount(initialBalance);
+    }
+
+    public void deposit(double amount) {
+        account.deposit(amount);
+    }
+
+    public void withdraw(double amount) {
+        account.withdraw(amount);
+    }
+
+    public void checkBalance() {
+        System.out.println("Balance for " + name + ": " + account.getBalance());
+    }
+}
+```
+
+Kelas ini memiliki atribut `name` sebagai nama dari customer dan `account` dengan tipe data kelas `BankAccount` yang merupakan akun bank dari customer. Lalu terdapat method `konstruktor` yang akan set value dari `name` dan `account`. Lalu terdapat method `deposit` yang akan memanggil method `deposit` dari `account` untuk setor uang dan method `withdraw` yang akan memanggil method `withdraw` dari `account` untuk tarik uang. Terakhir terdapat method `checkBalance` untuk mendapatkan total saldo dengan memamggil methdo `getBalance` dari `account`.
