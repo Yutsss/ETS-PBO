@@ -225,3 +225,7 @@ public class Customer {
 ```
 
 Kelas ini memiliki atribut `name` sebagai nama dari customer dan `account` dengan tipe data kelas `BankAccount` yang merupakan akun bank dari customer. Lalu terdapat method `konstruktor` yang akan set value dari `name` dan `account`. Lalu terdapat method `deposit` yang akan memanggil method `deposit` dari `account` untuk setor uang dan method `withdraw` yang akan memanggil method `withdraw` dari `account` untuk tarik uang. Terakhir terdapat method `checkBalance` untuk mendapatkan total saldo dengan memamggil methdo `getBalance` dari `account`.
+
+## **5. Buat Desain Class Diagram untuk `Trip Application`. Setiap perjalanan memiliki atribut `destination`, `distance` dan `costPerKM`. Aplikasi memiliki fitur menghitung total biaya berdasarkan jarak, menambah penumpang, dan membatalkan perjalanan jika penumpang kurang dari minimum**
+
+![nomor5](Resource/image.png)
