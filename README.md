@@ -6,6 +6,7 @@
 
 **Kelas** : PBO A
 
+![selfie](Resource/selfie.jpg)
 ---
 
 ## **1. Jelaskan perbedaan antara kelas dan objek, serta berikan contoh kode sederhana yang menunjukan hubungan kelas dan objek.**
@@ -227,5 +228,81 @@ public class Customer {
 Kelas ini memiliki atribut `name` sebagai nama dari customer dan `account` dengan tipe data kelas `BankAccount` yang merupakan akun bank dari customer. Lalu terdapat method `konstruktor` yang akan set value dari `name` dan `account`. Lalu terdapat method `deposit` yang akan memanggil method `deposit` dari `account` untuk setor uang dan method `withdraw` yang akan memanggil method `withdraw` dari `account` untuk tarik uang. Terakhir terdapat method `checkBalance` untuk mendapatkan total saldo dengan memamggil methdo `getBalance` dari `account`.
 
 ## **5. Buat Desain Class Diagram untuk `Trip Application`. Setiap perjalanan memiliki atribut `destination`, `distance` dan `costPerKM`. Aplikasi memiliki fitur menghitung total biaya berdasarkan jarak, menambah penumpang, dan membatalkan perjalanan jika penumpang kurang dari minimum**
+
+**Kelas Trip**
+
+```java
+import java.util.ArrayList;
+
+public class Trip {
+    private String destination;
+    private double distance;  
+    private double costPerKm; 
+    private ArrayList<String> passengers; 
+    private int minPassengers; 
+
+    public Trip(String destination, double distance, double costPerKm, int minPassengers) {
+        this.destination = destination;
+        this.distance = distance;
+        this.costPerKm = costPerKm;
+        this.passengers = new ArrayList<>();
+        this.minPassengers = minPassengers;
+    }
+
+    public void addPassenger(String passengerName) {
+        passengers.add(passengerName);
+        System.out.println("Passenger " + passengerName + " added.");
+    }
+
+    public void printPassengers() {
+        System.out.println("Passenger list for trip to " + destination + ":");
+        for (String passenger : passengers) {
+            System.out.println(passenger);
+        }
+    }
+
+    public double calculateTotalCost() {
+        return distance * costPerKm;
+    }
+
+    public boolean cancelTripIfTooFewPassengers() {
+        if (passengers.size() < minPassengers) {
+            System.out.println("Trip to " + destination + " canceled. Not enough passengers.");
+            return true; 
+        } else {
+            System.out.println("Trip to " + destination + " is confirmed.");
+            return false; 
+        }
+    }
+}
+
+```
+
+**Kelas TripApplication**
+
+```java
+public class TripApplication {
+    public static void main(String[] args) {
+        Trip trip1 = new Trip("Bali", 300, 2.5, 3);
+
+        trip1.addPassenger("John");
+        trip1.addPassenger("Alice");
+
+        trip1.printPassengers();
+an
+        System.out.println("Total trip cost: " + trip1.calculateTotalCost() + " units.");
+
+        trip1.cancelTripIfTooFewPassengers();
+
+        trip1.addPassenger("Bob");
+
+        trip1.printPassengers();
+        
+        trip1.cancelTripIfTooFewPassengers();
+    }
+}
+
+```
+
 
 ![nomor5](Resource/image.png)
